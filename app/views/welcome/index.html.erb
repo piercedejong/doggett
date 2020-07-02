@@ -1,0 +1,80 @@
+<% unless current_user.nil? %>
+    <h1>Welcome Back</h1>
+<% else %>
+
+<div class="container pt-5">
+    <div class="row text-center">
+        <h1 class="mx-auto">Welcome</h1>
+
+    </div>
+    <div class="row text-center">
+        <h5 class="mx-auto">Please fill out the below form to start making calls</h5>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-6 signup-card">
+            <div class="w-100 justify-content-center d-flex">
+                <%=image_tag "/assets/logo.png", id:"logo"%>
+            </div>
+
+            <%= form_with(model: @user, local: true) do |form| %>
+            <% if @user.errors.any? %>
+                <div id="error_explanation">
+                    <h5><%= pluralize(@user.errors.count, "error") %>
+                        prohibited this user from being saved:</h5>
+                    <ul>
+                        <% @user.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+            <form>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                        </div>
+                        <%= form.text_field :email, placeholder:"Email", autocomplete:"", required:"true", type:"email", class:"form-control input-group-form" %>
+                    </div>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <!-- input-group.// -->
+                </div>
+                <!-- form-group// -->
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                        <%= form.text_field :name, placeholder:"Name", required:"true", autocomplete:"", type:"text", class:"form-control" %>
+                    </div>
+                    <!-- input-group.// -->
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                        </div>
+                        <%= form.text_field :phone, placeholder:"Phone Number 123-123-1234", required:"true", autocomplete:"", type:"tel", class:"form-control", pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}" %>
+                    </div>
+                    <!-- input-group.// -->
+                </div>
+                <!-- form-group// -->
+                <div class="form-group">
+                    <%= form.submit "Login", :class=>"btn btn-block btn-primary" %>
+                </div>
+                <!-- form-group// -->
+            </form>
+        <% end %>
+    </div>
+</div>
+
+
+
+<% end %>
