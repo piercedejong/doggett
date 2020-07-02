@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :check_current_user
     def new
         @user = User.new
     end
@@ -33,5 +34,11 @@ class UsersController < ApplicationController
 
     def user_params
         params.require(:user).permit(:email, :name, :phone)
+    end
+
+    def check_current_user
+        if !current_user
+            redirect_to root_path
+        end
     end
 end

@@ -1,3 +1,4 @@
+<% content_for :title, "Yard Sign Call Sheet" %>
 <p class="pb-4">Logged in:
     <%=current_user.name%></p>
 
@@ -10,7 +11,7 @@
         <h5 class="text-center w-100">Congressman Lloyd Doggett for Congress</h5>
     </div>
     <div class="row">
-        <div id="voter">
+        <div id="voter" class="col-2">
             <h5>Voter Information</h5>
             <div>Name:
                 <%=@voter.name%></div>
@@ -20,12 +21,23 @@
                 <%=@voter.email%></div>
             <div>Address: <%=@voter.address%>
             </div>
+            <div>Status: <%=@voter.status%>
+            </div>
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col-4 d-flex align-items-end">
+            <%= link_to "Discard Call Sheet and go Home", root_path, class:"ml-auto btn btn-danger"%>
         </div>
     </div>
+    <div class="row text-right">
+
+    </div>
     <%= form_for @voter do |f| %>
-    <input type="hidden" name="voter[id]" next="<%=@voter.id%>"/>
+    <input type="hidden" name="voter[id]" value="<%=@voter.id%>"/>
     <div id="id-check" class="script-row">
-        <div class="section-text">Hello, may I please speak with
+        <div class="section-text">Hello, may I please speak to
             <b><%=@voter.name%></b>?</div>
         <div class="section-options">
             <div class="row button-group" data-toggle="buttons">
@@ -82,11 +94,11 @@
         <div class="section-options">
             <div class="row button-group" data-toggle="buttons">
                 <label class="btn btn-lg btn-script btn-primary col-3">
-                    <%= f.radio_button :support, "Yes, will support", id:"will-support", next:"will-support",class:"script-option", checked:false, type:"radio", autocomplete:"off" %>
+                    <%= f.radio_button :support, "Supporter", id:"will-support", next:"will-support",class:"script-option", checked:false, type:"radio", autocomplete:"off" %>
                     Yes, will support
                 </label>
                 <label class="btn btn-lg btn-script btn-primary col-3">
-                    <%= f.radio_button :support, "No, will not support", id:"will-not-support", next: "will-not-support", class:"script-option", checked:false, type:"radio", autocomplete:"off" %>
+                    <%= f.radio_button :support, "Not Supporter | ", id:"will-not-support", next: "will-not-support", class:"script-option", checked:false, type:"radio", autocomplete:"off" %>
                     Undecided/No
                 </label>
             </div>

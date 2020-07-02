@@ -15,31 +15,38 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)'
-document.addEventListener("turbolinks:load", function () {
-    $(document).ready(function () {
+document.addEventListener("turbolinks:load", function() {
+    $(document).ready(function() {
         $("#id-check").show()
 
-        $(".script-option").click(function(){
+        $(".script-option").click(function() {
             // Get the next section name
-            var next = "#section-"+$(this).attr("next")
+            var next = "#section-" + $(this).attr("next")
             // Reset any text_fields in the next section
             var id = $(this).attr('id')
-            if(id.includes("will-support") || id.includes("will-not-support")){
+            if (id.includes("will-support") || id.includes("will-not-support")) {
                 $("#no-support-reason").val("")
-            }else if(id.includes("correct-address") || id.includes("incorrect-address")){
+            } else if (id.includes("correct-address") || id.includes("incorrect-address")) {
                 $("#new-adress").val("")
             }
 
             $(this).parent().parent().parent().parent().nextAll().css("display", 'none')
             $(this).parent().parent().parent().parent().nextAll().find("label").removeClass("active")
             $(next).show()
-            var end_call_conditions=["do-not-call","end-call","deceased","voicemail","call-back-later","wrong-number","will-volunteer","will-not-support"]
-            if(next.includes("incorrect-address") || next.includes("correct-address")){
+            var end_call_conditions = ["do-not-call", "end-call", "deceased", "voicemail", "call-back-later", "wrong-number", "will-volunteer", "will-not-support"]
+            if (next.includes("incorrect-address") || next.includes("correct-address")) {
                 $("#section-volunteer-ask").show()
-            }else if(end_call_conditions.some(el=> next.includes(el))){
+            } else if (end_call_conditions.some(el => next.includes(el))) {
                 $("#submit").show()
             }
             $(document).scrollTop($(document).height())
         })
+
+        $("#voterSearch").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#voter-table tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
     })
 })
