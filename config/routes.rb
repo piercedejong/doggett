@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
     get 'nextcall', to: 'calls#nextcall'
 
+    get 'reset_calling_voters', to:'voters#reset_calling_voters'
+
 
     root 'welcome#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

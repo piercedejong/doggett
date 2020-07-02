@@ -17,6 +17,13 @@ class VotersController < ApplicationController
       end
   end
 
+  def reset_calling_voters
+      @v = Voter.where(status: "Currently Calling").all.each do |v|
+          v.update_column(:status, "Not Called Yet")
+      end
+      redirect_to voters_path
+  end
+
   def index
       @voters = Voter.all
   end
