@@ -18,10 +18,91 @@
 body{
     background-color: #f2f2f2
 }
-.signup-card{
+.welcome-card, .signup-card, .call-card{
     background-color: white;
-    padding: 15px;
+    padding: 15px 30px;
     border-radius: 0.5rem;
     box-shadow: 5px 5px rgba(0,0,0,0.1);
     margin-bottom: 5rem;
+}
+
+#voter{
+    background-color: lightgrey;
+    border-radius: 0.5rem;
+    padding:5px
+
+}
+.script-row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top: 10px;
+    padding-top: 10px;
+    margin-bottom: 30px;
+    border-top: 2px solid black;
+    display: none;
+}
+.section-text{
+    font-size: 1.25rem
+}
+.centered{
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn-script{
+    margin: 7px 10px;
+    padding: .5rem 1rem;
+    border-radius: 0.5rem !important;
+    color: white;
+}
+
+.script-option{
+    display: none
+}
+
+.btn-correct-person{
+    background-color: #00b300
+}
+
+.btn-voicemail{
+    background-color: #a64dff
+}
+
+.btn-wrong-number{
+    background-color: #ff4d4d
+}
+
+.btn-call-back-later{
+    background-color: coral
+}
+
+.btn-moved{
+    background-color: #17a2b8
+}
+
+.btn-refused, .btn-do-not-call{
+    background-color: #343a40
+}
+
+.btn-disconnected{
+    background-color: dimgray;
+    border-color: transparent;
+}
+
+.btn-disconnected{
+    // background-color:
+}
+
+.btn-deceased{
+    background-color: darkgrey;
+}
+
+.btn:hover, .btn:active, .btn:focus, .btn:focus-within, .btn-selected, .active{
+    background-color: #80d4ff !important;
+    border-color: #80d4ff !important;
+    box-shadow: none
 }

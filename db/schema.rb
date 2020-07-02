@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_223722) do
+ActiveRecord::Schema.define(version: 2020_07_02_190014) do
 
   create_table "users", primary_key: "uuid", id: :string, force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,20 @@ ActiveRecord::Schema.define(version: 2020_07_01_223722) do
     t.string "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "voters", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.datetime "last_called"
+    t.string "sign", default: ""
+    t.string "status", default: "not called"
+    t.string "volunteer", default: ""
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "support"
+    t.string "address", default: "No Address"
   end
 
 end

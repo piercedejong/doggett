@@ -1,5 +1,13 @@
 <% unless current_user.nil? %>
-    <h1>Welcome Back</h1>
+
+<div class="welcome-card centered text-center">
+    <div class="w-100 justify-content-center d-flex pb-4">
+        <%=image_tag "/assets/logo.png", id:"logo"%>
+    </div>
+    <h4 class="pb-4">Welcome back <%=current_user.name%></h4>
+    <%= link_to "Start Making Calls!", calls_path, class:"btn btn-primary btn-lg"%>
+</div>
+
 <% else %>
 
 <div class="container pt-5">
