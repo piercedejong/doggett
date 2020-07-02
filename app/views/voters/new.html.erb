@@ -1,0 +1,86 @@
+<div class="container voter-table-card mt-5">
+    <div class="row">
+        <div class="w-100 justify-content-center d-flex pb-4">
+            <%=image_tag "/assets/logo.png", id:"logo"%>
+        </div>
+        <h3 class="text-center w-100">Add New Voter</h3>
+    </div>
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col-6">
+            <%= form_for @voter do |f| %>
+            <% if @voter.errors.any? %>
+                <div id="error_explanation">
+                    <h5><%= pluralize(@voter.errors.count, "error") %>
+                        prohibited this user from being saved:</h5>
+                    <ul>
+                        <% @voter.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+            <form>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                        </div>
+                        <%= f.text_field :email, placeholder:"Email", autocomplete:"", required:"true", type:"email", class:"form-control input-group-form" %>
+                    </div>
+                    <!-- input-group.// -->
+                </div>
+                <!-- form-group// -->
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                        <%= f.text_field :name, placeholder:"Name", required:"true", autocomplete:"", type:"text", class:"form-control" %>
+                    </div>
+                    <!-- input-group.// -->
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                        </div>
+                        <%= f.text_field :phone, placeholder:"Phone Number 123-123-1234", required:"true", autocomplete:"", type:"tel", class:"form-control", pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}" %>
+                    </div>
+                    <!-- input-group.// -->
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-home"></i>
+                            </span>
+                        </div>
+                        <%= f.text_field :address, placeholder:"Address", required:"true", autocomplete:"", type:"text",class:"form-control", value:"" %>
+                    </div>
+                    <!-- input-group.// -->
+                </div>
+                <!-- form-group// -->
+                <div class="form-group d-flex">
+                    <%= link_to "Cancel", root_path, class:"btn btn-danger mr-1"%>
+                    <%= f.submit "Add Voter", :class=>"btn btn-block btn-primary" %>
+                </div>
+                <!-- form-group// -->
+            </form>
+            <%end%>
+        </div>
+        <div class="col">
+
+        </div>
+
+    </div>
+</div>

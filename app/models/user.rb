@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, uniqueness: { :case_sensitive => false }, format: { with: URI::MailTo::EMAIL_REGEXP }, length: {maximum: 256}
   validates :name, length: { in: 1..256, message: "must be between 1 and 256 characters long"}
+  has_many :voters
 
   default_scope { order(created_at: :asc) }
 
