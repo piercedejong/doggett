@@ -38,11 +38,14 @@
                             <td><%=v.sign%></td>
                             <td><%=v.volunteer%></td>
                             <% if v.user %>
-                                <td><%=v.user.name%></td>
+                                <% if v.status == "Not Called Yet" %>
+                                    <td></td>
+                                <% else %>
+                                    <td><%=v.user.name%></td>
+                                <% end %>
                             <% else%>
                                 <td></td>
                             <%end %>
-
                         </tr>
                     <% end %>
                 </tbody>
