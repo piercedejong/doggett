@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    before_action :check_current_user
     def new
         @user = User.new
     end
@@ -18,6 +17,7 @@ class UsersController < ApplicationController
                 end
             end
         else
+            binding.pry
             @user = User.find_by(email: user_params[:email])
             # Kepp the user signed in at all times
             cookies.permanent.signed[:permanent_user_id] = @user.uuid
