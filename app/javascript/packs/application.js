@@ -37,7 +37,7 @@ document.addEventListener("turbolinks:load", function() {
             if (next.includes("incorrect-address") || next.includes("correct-address")) {
                 $("#section-volunteer-ask").show()
             } else if (end_call_conditions.some(el => next.includes(el))) {
-                $("#submit").show()
+                $("#drction-submit").show()
             }
             $(document).scrollTop($(document).height())
         })
