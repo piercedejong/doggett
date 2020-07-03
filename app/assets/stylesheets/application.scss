@@ -101,8 +101,13 @@ body{
     background-color: darkgrey;
 }
 
+.btn-primary{
+    background-color: dodgerblue;
+    border-color: dodgerblue;
+}
+
 .btn:hover, .btn:active, .btn:focus, .btn:focus-within, .btn-selected, .active{
-    background-color: #80d4ff !important;
-    border-color: #80d4ff !important;
+    background-color: midnightblue !important;
+    border-color: midnightblue !important;
     box-shadow: none
 }

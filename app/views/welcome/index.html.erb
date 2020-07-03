@@ -21,7 +21,7 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-6 signup-card">
+        <div class="col-lg-6 signup-card">
             <div class="w-100 justify-content-center d-flex">
                 <%=image_tag "/assets/logo.png", id:"logo"%>
             </div>
@@ -70,7 +70,7 @@
                                 <i class="fas fa-phone"></i>
                             </span>
                         </div>
-                        <%= form.text_field :phone, placeholder:"Phone Number 123-123-1234", required:"true", autocomplete:"", type:"tel", class:"form-control", pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}" %>
+                        <%= form.number_field :phone, placeholder:"Phone Number: 5125554823", required:"true", autocomplete:"", type:"tel", class:"form-control", pattern: "[0-9]{3}[0-9]{3}[0-9]{4}" %>
                     </div>
                     <!-- input-group.// -->
                 </div>

@@ -12,7 +12,7 @@
         <h4 class="text-center w-100">Yard Sign Call Sheet</h4>
     </div>
     <div class="row">
-        <div id="voter" class="col-2">
+        <div id="voter" class="col-lg-3">
             <h5>Voter Information</h5>
             <div>Name:
                 <%=@voter.name%></div>
@@ -42,40 +42,40 @@
             <b><%=@voter.name%></b>?</div>
         <div class="section-options">
             <div class="row button-group" data-toggle="buttons">
-                <label type="radio" class="btn btn-lg btn-script btn-correct-person col-3">
+                <label type="radio" class="btn btn-lg btn-script btn-primary col-3">
                     <%= f.radio_button :status, "Correct Person", id:"correct-person", next:"correct-person", class:"script-option", checked:false %>
                     Talking to Correct Person
                 </label>
-                <label type="radio" class="btn btn-lg btn-script btn-call-back-later col-3">
+                <label type="radio" class="btn btn-lg btn-script btn-primary col-3">
                     <%= f.radio_button :status, "Call Back Later", id:"call-back-later", next:"call-back-later", class:"script-option", checked:false %>
                     Call Back Later
                 </label>
-                <label type="radio" class="btn btn-lg btn-script btn-voicemail col-3">
+                <label type="radio" class="btn btn-lg btn-script btn-primary col-3">
                     <%= f.radio_button :status, "Voicemail", id:"voicemail", next:"voicemail", class:"script-option", checked:false %>
                     Voicemail
                 </label>
-                <label type="radio" class="btn btn-lg btn-script btn-wrong-number col-3">
+                <label type="radio" class="btn btn-lg btn-script btn-primary col-3">
                     <%= f.radio_button :status, "Wrong Number", id:"wrong-number", next:"wrong-number", class:"script-option", checked:false %>
                     Wrong Number
                 </label>
-                <label type="radio" class="btn btn-lg btn-script btn-moved col-3">
+                <label type="radio" class="btn btn-lg btn-script btn-primary col-3">
                     <%= f.radio_button :status, "Moved", id:"moved", next:"end-call", class:"script-option", checked:false %>
                     Moved
                 </label>
 
-                <label type="radio" class="btn btn-script btn-disconnected col-3">
-                    <%= f.radio_button :status, "disconnected", id:"disconnected", next:"", class:"script-option", checked:false %>
+                <label type="radio" class="btn btn-script btn-primary col-3">
+                    <%= f.radio_button :status, "disconnected", id:"disconnected", next:"end-call", class:"script-option", checked:false %>
                     Disconnected/Out of Service
                 </label>
-                <label type="radio" class="btn btn-lg btn-script btn-deceased col-3">
+                <label type="radio" class="btn btn-lg btn-script btn-primary col-3">
                     <%= f.radio_button :status, "Deceased", id:"deceased", next:"deceased", class:"script-option", checked:false %>
                     Deceased
                 </label>
-                <label type="radio" class="btn btn-lg btn-script btn-refused col-3">
+                <label type="radio" class="btn btn-lg btn-script btn-primary col-3">
                     <%= f.radio_button :status, "Refused", id:"refsued", next:"end-call", class:"script-option", checked:false %>
                     Refused
                 </label>
-                <label itype="radio" class="btn btn-lg btn-script btn-do-not-call col-3">
+                <label itype="radio" class="btn btn-lg btn-script btn-primary col-3">
                     <%= f.radio_button :status, "Do Not Call", id:"do-not-call", next:"do-not-call", class:"script-option", checked:false %>
                     Do Not Call
                 </label>
@@ -225,7 +225,7 @@
 
     <div id="section-voicemail" class="script-row">
         <div class="section-text">
-            Hi, this is <b>[Your Name]</b> with the Lloyd Doggett for Congress campaign. I'm callign to thank you for your past support for Lloyd Doggett. If you would like to receive a free Doggett yard sign or more information, please call 210-632-8468 or email info @votedoggett.com. <b>[END CALL]</b>
+            Hi, this is <b>[Your Name]</b> with the Lloyd Doggett for Congress campaign. I'm calling to thank you for your past support for Lloyd Doggett. If you would like to receive a free Doggett yard sign or more information, please call 210-632-8468 or email info @votedoggett.com. <b>[END CALL]</b>
         </div>
     </div>
 
@@ -249,7 +249,10 @@
 
     <div id="submit" class="script-row text-center pb-2" style="background-color:lightgrey; margin-top:50px">
         <p class="text-center w-100">
-            *** Please ensure the correct buttons were pressed and all of the data is accurate before ending the call and submitting the call sheet***
+            *** Please ensure the correct buttons were pressed and all of the data is accurate before ending the call and submitting the call sheet. ***
+        </p>
+        <p class="text-center w-100">
+            *** The website will automatically record the answers and update the voters information. You do not need to enter any other data or inforamtion. ***
         </p>
         <%= f.submit "Submit Call Sheet", :class=>"btn btn-lg btn-warning px-5" %>
     </div>
