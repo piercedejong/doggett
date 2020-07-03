@@ -1,7 +1,8 @@
 <div class="welcome-card centered text-center">
     <div class="w-100 justify-content-center d-flex pb-4">
-        <%=image_tag "/assets/logo.png", id:"logo"%>
+        <%=image_tag asset_path("logo.png"), id:"logo"%>
     </div>
+
     <h4 class="pb-4">Call Sheet Submitted!</h4>
     <div class="d-flex">
         <%= link_to "Make Another Call", calls_path, class:"btn btn-primary mr-3"%>

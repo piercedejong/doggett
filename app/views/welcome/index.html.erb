@@ -2,7 +2,7 @@
 <p id="alert" class="alert alert-primary text-center"><%= alert %></p>
 <div class="welcome-card centered text-center">
     <div class="w-100 justify-content-center d-flex pb-4">
-        <%=image_tag "/assets/logo.png", id:"logo"%>
+        <%=image_tag asset_path("logo.png"), id:"logo"%>
     </div>
     <h3 class="text-center w-100">Congressman Lloyd Doggett for Congress</h3>
     <h4 class="pb-4">Hello <%=current_user.name%></h4>
