@@ -25,7 +25,12 @@ class VotersController < ApplicationController
   end
 
   def index
-      @voters = Voter.all
+      if current_user.admin
+           @voters = Voter.all
+      else
+           @voters = Voter.where(user_id: current_user.id)
+      end
+
   end
 
   def update
@@ -37,17 +42,25 @@ class VotersController < ApplicationController
           voter.update(sign: voter_params[:sign])
           if(voter_params[:address]=="update")
               voter.update(address: voter_params[:new_address])
+              voter.update(city: voter_params[:city])
+              voter.update(state: voter_params[:state])
+              voter.update(zip5: voter_params[:zip5])
           end
           voter.update(volunteer: voter_params[:volunteer])
       end
       redirect_to nextcall_path
   end
 
+  def import
+      Voter.import(params[:file])
+      redirect_to voters_path
+  end
+
 
   private
 
   def voter_params
-      params.require(:voter).permit(:email, :name, :phone, :status, :id, :sign, :support, :no_support, :address, :new_address, :volunteer)
+      params.require(:voter).permit(:email, :name, :phone, :status, :id, :sign, :support, :no_support, :address, :new_address, :volunteer, :city, :state, :zip5)
   end
   def new_voter_params
       params.require(:voter).permit(:email, :name, :phone, :address)

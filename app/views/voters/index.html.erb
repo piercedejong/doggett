@@ -3,25 +3,30 @@
         <div class="w-100 justify-content-center d-flex pb-4">
             <%=image_tag asset_path("logo.png"), id:"logo"%>
         </div>
-        <h3 class="text-center w-100">Congressman Lloyd Doggett for Congress</h3>
-        <h4 class="text-center w-100">All Voters</h4>
+        <h4 class="text-center w-100">Your Call List</h4>
     </div>
     <div class="row mb-4">
-        <%= link_to "Home Page", root_path, class:"btn btn-primary mx-1"%>
+        <%= link_to "Home", root_path, class:"btn btn-primary mx-1"%>
         <%= link_to "Make a Call", calls_path, class:"btn btn-primary mx-1"%>
-        <%= link_to "Add Voter", new_voter_path, class:"btn btn-primary mx-1"%>
-        <%= link_to "Reset Calling Voters", reset_calling_voters_path, class:"btn btn-primary mx-1"%>
     </div>
+    <% if current_user.admin? %>
+    <div class="row mb-4">
+        <%= form_tag import_voters_path, multipart: true do %>
+            <%= file_field_tag :file, class:"btn btn-dark" %>
+            <%= submit_tag "Import", class:"btn btn-warning" %>
+        <% end %>
+    </div>
+    <%end %>
     <div class="row">
-        <input class="form-control" id="voterSearch" type="text" placeholder="Search..">
+        <input class="form-control" id="voterSearch" type="text" placeholder="Search...">
         <div class="table mt-3">
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Address</th>
+                        <th scope="col" style="width:20%">Address</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Last Called</th>
                         <th scope="col">Support</th>
                         <th scope="col">Yard Sign</th>
                         <th scope="col">Volunteer</th>
@@ -32,21 +37,13 @@
                     <% @voters.order('voters.status ASC').each do |v| %>
                         <tr>
                             <td scope="row"><%=v.name%></td>
-                            <td><%=v.email%></td>
-                            <td><%=v.address%></td>
+                            <td><%=v.full_address%></td>
                             <td><%=v.status%></td>
+                            <td><%=v.contact%></td>
                             <td><%=v.support%></td>
                             <td><%=v.sign%></td>
                             <td><%=v.volunteer%></td>
-                            <% if v.user %>
-                                <% if v.status == "Not Called Yet" %>
-                                    <td></td>
-                                <% else %>
-                                    <td><%=v.user.name%></td>
-                                <% end %>
-                            <% else%>
-                                <td></td>
-                            <%end %>
+                            <td><%=v.user.name%></td>
                         </tr>
                     <% end %>
                 </tbody>

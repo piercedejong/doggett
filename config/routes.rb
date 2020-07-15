@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
     resources :users, only: [:new, :create]
     resources :voters, only: [:new, :create, :edit, :update, :index]
+    resources :voters do collection {post :import} end
     get 'calls', to:'calls#index', as: :calls
     get 'welcome/index'
 

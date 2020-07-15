@@ -1,12 +1,16 @@
+<% if alert %>
+<p id="alert" class="alert alert-warning text-center"><%= alert %></p>
+<% end %>
+
+
 <% unless current_user.nil? %>
-<p id="alert" class="alert alert-primary text-center"><%= alert %></p>
 <div class="welcome-card centered text-center">
     <div class="w-100 justify-content-center d-flex pb-4">
         <%=image_tag asset_path("logo.png"), id:"logo"%>
     </div>
-    <h3 class="text-center w-100">Congressman Lloyd Doggett for Congress</h3>
     <h4 class="pb-4">Hello <%=current_user.name%></h4>
-    <%= link_to "Start Making Calls!", calls_path, class:"btn btn-primary btn-lg"%>
+    <%= link_to "Start Making Calls!", calls_path, class:"btn btn-primary"%>
+    <%= link_to "View your call list", voters_path, class:"btn btn-primary"%>
 </div>
 
 <% else %>
@@ -22,11 +26,12 @@
 
     <div class="row justify-content-center">
         <div class="col-lg-6 signup-card">
-            <div class="w-100 justify-content-center d-flex">
+            <div class="w-100 justify-content-center d-flex pb-2">
                 <%=image_tag "/assets/logo.png", id:"logo"%>
             </div>
 
             <%= form_with(model: @user, local: true) do |form| %>
+            <% if @user %>
             <% if @user.errors.any? %>
                 <div id="error_explanation">
                     <h5><%= pluralize(@user.errors.count, "error") %>
@@ -38,19 +43,9 @@
                     </ul>
                 </div>
             <% end %>
+            <%end %>
+
             <form>
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="fa fa-envelope"></i>
-                            </span>
-                        </div>
-                        <%= form.text_field :email, placeholder:"Email", autocomplete:"", required:"true", type:"email", class:"form-control input-group-form" %>
-                    </div>
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    <!-- input-group.// -->
-                </div>
                 <!-- form-group// -->
                 <div class="form-group">
                     <div class="input-group">
@@ -63,6 +58,19 @@
                     </div>
                     <!-- input-group.// -->
                 </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                        </div>
+                        <%= form.text_field :email, placeholder:"Email", autocomplete:"", required:"true", type:"email", class:"form-control input-group-form" %>
+                    </div>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <!-- input-group.// -->
+                </div>
+
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">

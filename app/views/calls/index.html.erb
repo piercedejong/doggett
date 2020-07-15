@@ -29,7 +29,7 @@
 
         </div>
         <div class="col-4 d-flex align-items-end">
-            <% link_to "Discard Call Sheet and go Home", root_path, class:"ml-auto btn btn-danger"%>
+            <%= link_to "Discard Call Sheet and Go Home", root_path, class:"ml-auto btn btn-danger"%>
         </div>
     </div>
     <div class="row text-right">
@@ -129,7 +129,7 @@
         <div class="section-options">
             <div class="row button-group" data-toggle="buttons">
                 <label class="btn btn-lg btn-script btn-primary col-3">
-                    <%= f.radio_button :sign, "Yes (Campaing place sign)", id:"yes-sign-campaign",next:"confirm-address", class:"script-option", checked:false, type:"radio", autocomplete:"off" %>
+                    <%= f.radio_button :sign, "Yes (Campaign place sign)", id:"yes-sign-campaign",next:"confirm-address", class:"script-option", checked:false, type:"radio", autocomplete:"off" %>
                     Yes (Campign place sign)
                 </label>
                 <label class="btn btn-lg btn-script btn-primary col-3">
@@ -168,8 +168,17 @@
         </div>
         <div class="section-options">
             <div class="row">
-                <div class="form-group w-100" style="padding: 10px 10px;">
+                <div class="form-group w-100 m-0" style="padding: 4px 10px;">
                     <%= text_field_tag 'voter[new_address]', nil, id:"new-address", placeholder:"Insert Address here", autocomplete:"", class:"form-control input-group-form w-100"%>
+                </div>
+                <div class="form-group w-100 m-0" style="padding: 4px 10px;">
+                    <%= text_field_tag 'voter[city]', nil, id:"new-city", placeholder:"Insert City here", autocomplete:"", class:"form-control input-group-form w-100"%>
+                </div>
+                <div class="form-group w-100 m-0" style="padding: 4px 10px;">
+                    <%= text_field_tag 'voter[states]', nil, id:"new-state", placeholder:"Insert States here", autocomplete:"", class:"form-control input-group-form w-100"%>
+                </div>
+                <div class="form-group w-100 m-0" style="padding: 4px 10px;">
+                    <%= text_field_tag 'voter[zip5]', nil, id:"new-zip", placeholder:"Insert Zipcode here", autocomplete:"", class:"form-control input-group-form w-100"%>
                 </div>
             </div>
         </div>
@@ -204,7 +213,11 @@
 
     <div id="section-will-volunteer" class="script-row">
         <div class="section-text">
-            Great! I'll sign you up right now. <a class="item-text" target="_blank" rel="noopener noreferrer" href="https://www.votedoggett.com/getinvolved/">{Volunteer Link}</a>
+            Great! Whats your email address? <!--  <a class="item-text" target="_blank" rel="noopener noreferrer" href="https://www.votedoggett.com/getinvolved/">{Volunteer Link}</a> -->
+            <div class="form-group w-100 m-0" style="padding: 4px 10px;">
+                <%= text_field_tag 'voter[email]', nil, id:"email", placeholder:"Insert Email here", autocomplete:"", class:"form-control input-group-form w-100"%>
+            </div>
+            <i>The voter will be automatically signed up to volunteer.</i>
             <br />
             <br />
             Thank you for your time and have a good rest of your day! <b>[END CALL]</b>
@@ -252,7 +265,7 @@
             *** Please ensure the correct buttons were pressed and all of the data is accurate before ending the call and submitting the call sheet. ***
         </p>
         <p class="text-center w-100">
-            *** The website will automatically record the answers and update the voters information. You do not need to enter any other data or inforamtion. ***
+            *** The website will automatically record the answers and update the voters information. You do not need to enter any other data or informations. ***
         </p>
         <%= f.submit "Submit Call Sheet", :class=>"btn btn-lg btn-warning px-5" %>
     </div>
