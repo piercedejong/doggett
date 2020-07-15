@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_212833) do
+ActiveRecord::Schema.define(version: 2020_07_15_180103) do
 
   create_table "users", primary_key: "uuid", id: :string, force: :cascade do |t|
     t.string "name"
@@ -20,19 +20,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_212833) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "voters", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "phone"
-    t.datetime "last_called"
-    t.string "sign", default: ""
-    t.string "status", default: "Not Called Yet"
-    t.string "volunteer", default: ""
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "support"
-    t.string "address", default: "No Address"
-    t.string "user_id"
-  end
+# Could not dump table "voters" because of following StandardError
+#   Unknown type '' for column 'first_name'
 
 end
