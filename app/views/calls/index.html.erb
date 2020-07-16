@@ -37,7 +37,7 @@
     <input type="hidden" name="voter[id]" value="<%=@voter.id%>"/>
     <div id="id-check" class="script-row">
         <div class="section-text">Hello, may I please speak to
-            <b><%=@voter.name%></b>?</div>
+            <b><%=@voter.first_name%></b>?</div>
         <div class="section-options">
             <div class="row button-group" data-toggle="buttons">
                 <label type="radio" class="btn btn-lg btn-script btn-primary col-3">
@@ -84,7 +84,7 @@
     <div id="section-correct-person" class="script-row">
         <div class="section-text">
             Hi
-            <b><%=@voter.name%></b>, My name is
+            <b><%=@voter.first_name%></b>, My name is
             <b>[Your Name]</b>. I'm a volunteer with the Lloyd Doggett for Congress campaign.
             <br/>
             <br/>
