@@ -14,11 +14,15 @@ class Voter < ApplicationRecord
         end
     end
 
+    def format_phone
+        return self.phone.sub(/(\d{3})(\d{3})(\d{4})/, "\\1-\\2-\\3")
+    end
+
     def contact
         if self.created_at == self.updated_at
             return ""
         else
-            return self.updated_at.to_formatted_s(:short)     
+            return self.updated_at.to_formatted_s(:short)
         end
     end
 
