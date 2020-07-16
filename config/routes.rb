@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'welcome', to: 'welcome#index'
 
     get 'nextcall', to: 'calls#nextcall'
+    get 'walkthrough', to: 'calls#walkthrough'
 
     get 'reset_calling_voters', to:'voters#reset_calling_voters'
 
