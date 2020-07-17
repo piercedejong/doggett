@@ -97,8 +97,12 @@
                     Yes, will support
                 </label>
                 <label class="btn btn-lg btn-script btn-primary col-3">
+                    <%= f.radio_button :support, "Undecided | ", id:"undecided-support", next: "will-not-support", class:"script-option", checked:false, type:"radio", autocomplete:"off" %>
+                    Undecided
+                </label>
+                <label class="btn btn-lg btn-script btn-primary col-3">
                     <%= f.radio_button :support, "Not Supporter | ", id:"will-not-support", next: "will-not-support", class:"script-option", checked:false, type:"radio", autocomplete:"off" %>
-                    Undecided/No
+                    No
                 </label>
             </div>
         </div>
