@@ -53,6 +53,10 @@
                     Voicemail
                 </label>
                 <label type="radio" class="btn btn-lg btn-script btn-primary col-3">
+                    <%= f.radio_button :status, "Continued Ringing", id:"continued-ringing", next:"submit", class:"script-option", checked:false %>
+                    Continued Ringing
+                </label>
+                <label type="radio" class="btn btn-lg btn-script btn-primary col-3">
                     <%= f.radio_button :status, "Wrong Number", id:"wrong-number", next:"wrong-number", class:"script-option", checked:false %>
                     Wrong Number
                 </label>

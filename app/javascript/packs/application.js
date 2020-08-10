@@ -33,7 +33,7 @@ document.addEventListener("turbolinks:load", function() {
             $(this).parent().parent().parent().parent().nextAll().css("display", 'none')
             $(this).parent().parent().parent().parent().nextAll().find("label").removeClass("active")
             $(next).show()
-            var end_call_conditions = ["do-not-call", "end-call", "deceased", "voicemail", "call-back-later", "wrong-number", "will-volunteer", "will-not-support"]
+            var end_call_conditions = ["continued-ringing", "do-not-call", "end-call", "deceased", "voicemail", "call-back-later", "wrong-number", "will-volunteer", "will-not-support"]
             if (next.includes("incorrect-address") || next.includes("correct-address")) {
                 $("#section-volunteer-ask").show()
             } else if (end_call_conditions.some(el => next.includes(el))) {
