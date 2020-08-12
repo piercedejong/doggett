@@ -47,6 +47,10 @@
                             <td><%=v.sign%></td>
                             <td><%=v.volunteer%></td>
                             <td><%=v.user.name%></td>
+                            <% if current_user.admin? %>
+                                <td><%=link_to "Voter", calls_path(voter_id: v.id), class:"btn btn-primary"%></td>
+                            <% end %>
+
                         </tr>
                     <% end %>
                 </tbody>
