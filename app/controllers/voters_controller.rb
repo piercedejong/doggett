@@ -28,7 +28,8 @@ class VotersController < ApplicationController
       if current_user.admin
            @voters = Voter.all
       else
-           @voters = Voter.where(user_id: current_user.id)
+           # @voters = Voter.where(user_id: current_user.id)
+            @voters = Voter.all
       end
 
   end

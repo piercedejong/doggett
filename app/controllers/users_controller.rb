@@ -11,7 +11,10 @@ class UsersController < ApplicationController
                     cookies.permanent.signed[:permanent_user_id] = @user.uuid
                     session[:user_id] = @user.uuid
                     voters = Voter.where(user_id: User.first.id).where(status: "Not Called Yet").limit(50)
-                    voters.all.each do |v| v.update(user_id: @user.id) end
+                    if voters
+                        voters.all.each do |v| v.update(user_id: @user.id) end
+                    end
+
                     format.html { redirect_to root_path }
                 else
                     format.html { render 'welcome/index' }
