@@ -16,8 +16,8 @@ class User < ApplicationRecord
   end
 
   def stats
-      count = self.voters.count
-      called = self.voters.where.not(status: "Not Called Yet").count
+      count = Voters.count
+      called = Voters.where.not(status: "Not Called Yet").count
 
       return called.to_s+ "/"+count.to_s
   end
